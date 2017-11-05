@@ -1,4 +1,6 @@
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/app-storage/app-indexeddb-mirror/app-indexeddb-mirror.html">
+<link rel="import" href="../bower_components/polymerfire/polymerfire.html">
 
 <dom-module id="reminder-app">
   <template>
@@ -7,6 +9,36 @@
         display: block;
       }
     </style>
+
+    <firebase-auth
+      id="auth"
+      app-name="notes"
+      provider="google"
+      signed-in="{{signedIn}}"
+      user="{{user}}">
+    </firebase-auth>
+
+    <firebase-document
+      id="document"
+      app-name="notes"
+      path="[[editableNoteId]]"
+      data="{{editableNote}}">
+    </firebase-document>
+
+    <firebase-query
+      id="query"
+      app-name="notes"
+      path="/notes/[[user.uid]]"
+      data="{{notes}}">
+    </firebase-query>
+
+    <app-indexeddb-mirror
+      session="[[user.uid]]"
+      key="notes"
+      data="{{notes}}"
+      persisted-data="{{persistedNotes}}">
+    </app-indexeddb-mirror>
+
     <h2>Hello [[prop1]]!</h2>
   </template>
 

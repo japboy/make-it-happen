@@ -2,7 +2,9 @@
   "name": "make-it-happen",
   "main": "index.html",
   "dependencies": {
-    "polymer": "Polymer/polymer#^2.0.0"
+    "polymer": "Polymer/polymer#^2.0.0",
+    "polymerfire": "firebase/polymerfire#^2.2.1",
+    "app-storage": "PolymerElements/app-storage#^2.0.2"
   },
   "devDependencies": {
     "web-component-tester": "Polymer/web-component-tester#^6.0.0",
